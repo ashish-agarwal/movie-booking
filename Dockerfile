@@ -18,6 +18,7 @@ ENV NODE_ENV=$ENVIRONMENT
 RUN curl -O https://bootstrap.pypa.io/get-pip.py
 RUN python3 get-pip.py --user --no-warn-script-location
 RUN /root/.local/bin/pip3 install awscli --upgrade --user --no-warn-script-location
+RUN aws sts get-caller-identity
 RUN /root/.local/bin/aws s3 cp s3://ashish-files/movies-booking.env ./.env
 
 # # Install app dependencies
