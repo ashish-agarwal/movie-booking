@@ -4,6 +4,7 @@
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 process.env.PORT = process.env.PORT || 8080;
+require('dotenv').config();
 
 const express = require('express');
 
