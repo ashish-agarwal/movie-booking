@@ -3,9 +3,9 @@
 'use strict';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.PORT = process.env.PORT || 8080;
 
 const express = require('express');
-const config = require('./config');
 
 const app = express();
 
@@ -25,6 +25,7 @@ app.use((req, res, next) => {
 // will print stacktrace
 if (process.env.NODE_ENV === 'development') {
     app.use((err, req, res, next) => {
+        // eslint-disable-next-line no-console
         console.error(err);
         res.status(err.status || 500);
         res.send({
