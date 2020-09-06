@@ -15,6 +15,7 @@ exports.registerUser = function (req, res, next) {
             return res.send({ result: user, message: 'user created successfully' });
         }).catch((err) => {
             err.status = 400;
+            console.log('err ', err);
             next(err);
         });
 };
@@ -31,8 +32,7 @@ exports.authenticate = function (req, res, next) {
                 result: user,
                 tokens
             });
-        })
-        .catch((err) => {
+        }).catch((err) => {
             err.status = 400;
             next(err);
         });

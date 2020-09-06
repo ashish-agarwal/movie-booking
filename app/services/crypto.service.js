@@ -8,19 +8,30 @@ const config = require('../../config/'),
     // Secret Keys
     cryptokey = config.CRYPTOKEY;
 
+const algorithm = 'aes-256-ctr';
+
+const IV_LENGTH = 16;
+
+const ENCRYPTION_KEY = crypto.createHash('sha256').update(String(cryptokey)).digest('base64').substr(0, 32);
+
 module.exports = {
 
     encrypt(payload) {
-        const cipher = crypto.createCipher('aes-256-ctr', cryptokey);
-        let crypted = cipher.update(payload.toString(), 'utf8', 'hex');
-        crypted += cipher.final('hex');
-        return crypted;
+        const iv = crypto.randomBytes(IV_LENGTH);
+        const cipher = crypto.createCipheriv(algorithm, ENCRYPTION_KEY, iv);
+        let encrypted = cipher.update(payload.toString());
+        encrypted = Buffer.concat([encrypted, cipher.final()]);
+        return iv.toString('hex') + ':' + encrypted.toString('hex');
     },
 
     decrypt(text) {
-        const decipher = crypto.createDecipher('aes-256-ctr', cryptokey);
-        let dec = decipher.update(text, 'hex', 'utf8');
-        dec += decipher.final('utf8');
-        return dec;
+        const textParts = text.split(':');
+        const iv = Buffer.from(textParts.shift(), 'hex');
+        const encryptedText = Buffer.from(textParts.join(':'), 'hex');
+        const decipher = crypto.createDecipheriv(algorithm, ENCRYPTION_KEY, iv);
+        let decrypted = decipher.update(encryptedText);
+        decrypted = Buffer.concat([decrypted, decipher.final()]);
+        return decrypted.toString();
+
     }
 };
