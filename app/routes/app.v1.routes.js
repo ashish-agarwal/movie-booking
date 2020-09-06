@@ -3,6 +3,7 @@
 const UserController = require('../controllers/user.server.controller');
 const MovieController = require('../controllers/movie.server.controller');
 const CinemaController = require('../controllers/cinema.server.controller');
+const ScreeningController = require('../controllers/screening.server.controller');
 const middlewares = require('../middlewares/authorization');
 
 const app = require('express').Router();
@@ -15,7 +16,7 @@ app.get('/movies', MovieController.getMovies);
 app.post('/cinema', CinemaController.create);
 app.get('/cinemas', CinemaController.get);
 
-app.post('/screening', MovieController.getMovies);
+app.post('/screening', ScreeningController.create);
 
 
 module.exports = app;
