@@ -17,6 +17,8 @@ app.post('/cinema', CinemaController.create);
 app.get('/cinemas', CinemaController.get);
 
 app.post('/screening', ScreeningController.create);
+app.get('/screenings/city/:city', ScreeningController.getByCity);
+app.get('/screenings/movie/:title', ScreeningController.getByMovie);
 
 
 module.exports = app;

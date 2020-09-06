@@ -1,21 +1,27 @@
 'use strict';
 
 const mongoose = require('mongoose'), { Schema } = mongoose;
+const Movie = require('./movie');
+const Cinema = require('./cinema');
 
 const ScreeningSchema = new Schema(
     {
-        cinema_id: {
-            type: String,
-            trim: true,
-            required: true
+        cinema: {
+            _id: {
+                type: Schema.Types.ObjectId,
+                ref: Cinema,
+                trim: true
+            },
+            name: String,
+            city: String
         },
-        movie_id: {
-            type: String,
-            trim: true
-        },
-        city: {
-            type: String,
-            trim: true
+        movie: {
+            _id: {
+                type: Schema.Types.ObjectId,
+                ref: Movie,
+                trim: true
+            },
+            title: String
         },
         start_time: Date,
         end_time: Date,

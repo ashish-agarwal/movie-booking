@@ -11,7 +11,8 @@ const CinemaSchema = new Schema(
         },
         city: {
             type: String,
-            trim: true
+            trim: true,
+            lowercase: true
         },
         address: {
             type: String,

@@ -21,5 +21,11 @@ exports.getCinemas = function (query) {
 };
 
 exports.getCinemaById = function (id) {
-    return Cinema.findById(id);
+    return Cinema.findById(id)
+        .then((cinema) => {
+            if (!cinema) {
+                throw new Error('No cinema found with ' + id);
+            }
+            return cinema;
+        });
 };
