@@ -2,7 +2,8 @@
 
 const mongoose = require('mongoose'),
     config = require('./index');
-mongoose.Promise = global.Promise;
+const Promise = require('bluebird');
+mongoose.Promise = Promise.Promise;
 mongoose.set('useCreateIndex', true);
 // Bootstrap db connection
 let db = mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true });

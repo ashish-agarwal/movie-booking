@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose'), { Schema } = mongoose;
 
-const ScreeningSchema = new Schema(
+const SeatSchema = new Schema(
     {
         cinema_id: {
             type: String,
@@ -23,4 +23,4 @@ const ScreeningSchema = new Schema(
     }
 );
 
-module.exports = mongoose.model('Screening', ScreeningSchema);
+module.exports = mongoose.model('Seat', SeatSchema);

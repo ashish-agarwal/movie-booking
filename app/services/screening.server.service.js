@@ -2,6 +2,10 @@
 
 const Screening = require('../models/screening');
 
+exports.createScreening = function (screening) {
+    return Screening.create(screening);
+};
+
 exports.updateScreening = function (id, screening) {
     return Screening.findOneAndUpdate({
         _id: id,
