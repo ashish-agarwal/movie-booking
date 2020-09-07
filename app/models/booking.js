@@ -4,6 +4,7 @@ const mongoose = require('mongoose'), { Schema } = mongoose;
 const Movie = require('./movie');
 const Cinema = require('./cinema');
 const Screening = require('./screening');
+const User = require('./user');
 
 const BookingSchema = new Schema(
     {
@@ -21,6 +22,14 @@ const BookingSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: Screening,
             required: true
+        },
+        user: {
+            _id: {
+                type: Schema.Types.ObjectId,
+                ref: User,
+                required: true
+            },
+            name: String
         },
         movie: {
             _id: {

@@ -17,35 +17,9 @@ exports.createToken = function (user) {
     return token;
 };
 
-exports.createRefreshToken = function (user) {
-    // Create a Token and send the response
-    const userDetails = {
-        name: user.name,
-        role: user.role,
-        _id: CryptoService.encrypt(user._id)
-    };
-    const refreshToken = jwt.sign(userDetails, config.jwtRefreshSecret, {
-        expiresIn: config.refreshExpiry
-    });
-    return refreshToken;
-};
-
-
 exports.verifyToken = function (token) {
     return new Promise(((resolve, reject) => {
         jwt.verify(token, config.jwtSecret, (err, decoded) => {
-            if (err) {
-                return reject(err);
-            }
-            decoded._id = CryptoService.decrypt(decoded._id);
-            return resolve(decoded);
-        });
-    }));
-};
-
-exports.verifyRefreshToken = function (token) {
-    return new Promise(((resolve, reject) => {
-        jwt.verify(token, config.jwtRefreshSecret, (err, decoded) => {
             if (err) {
                 return reject(err);
             }

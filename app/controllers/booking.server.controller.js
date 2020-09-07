@@ -11,6 +11,7 @@ exports.create = function (req, res, next) {
     if (!bookingObj.seat || !bookingObj.seat.row || !bookingObj.seat.seat) {
         return res.status(400).send({ message: 'Please select a seat' });
     }
+    bookingObj.user = req.user;
     return Promise.props({
         bookings: BookingService.getBookings({
             'seat.row': bookingObj.seat.row, 'seat.seat': bookingObj.seat.seat,

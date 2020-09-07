@@ -26,7 +26,6 @@ exports.authenticate = function (req, res, next) {
         .then((user) => {
             const tokens = {};
             tokens.authToken = AuthService.createToken(user);
-            tokens.refreshToken = AuthService.createRefreshToken(user);
             res.send({
                 sucess: true,
                 result: user,

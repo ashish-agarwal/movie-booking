@@ -62,7 +62,7 @@ module.exports = function (app) {
     app.use('/', appRoutes);
     app.use('/api/v1/', require('../app/routes/app.v1.routes'));
 
-    console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), process.env.PORT || 3000, process.env.NODE_ENV);
+    console.log('%s App is running at http://localhost:%s in %s mode', chalk.green('✓'), process.env.PORT.toString(), process.env.NODE_ENV);
 
     console.log('  Press CTRL-C to stop\n');
 };
