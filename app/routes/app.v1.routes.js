@@ -21,6 +21,8 @@ app.post('/screening', ScreeningController.create);
 app.get('/screenings/city/:city', ScreeningController.getByCity);
 app.get('/screenings/movie/:title', ScreeningController.getByMovie);
 
+app.get('/screening/:screeningId/seats', BookingController.getSeatsForAScreening);
+
 app.post('/booking', middlewares.requiresLogin, BookingController.create);
 
 module.exports = app;
