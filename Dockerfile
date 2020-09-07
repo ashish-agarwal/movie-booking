@@ -3,17 +3,20 @@ FROM node:13.11.0
 ARG REGION=ap-south-1
 ENV AWS_DEFAULT_REGION=$REGION
 
-ARG ENVIRONMENT=$ENVIRONMENT
 ARG KEY
 ENV AWS_ACCESS_KEY_ID=$KEY
 
 ARG SECRET
 ENV AWS_SECRET_ACCESS_KEY=$SECRET
 
+ARG ENVIRONMENT=$ENVIRONMENT
+
 # # Create app directory
 WORKDIR /usr/src/app
 
 ENV NODE_ENV=$ENVIRONMENT
+RUN echo $REGION
+
 # Install AWS CLI
 RUN curl -O https://bootstrap.pypa.io/get-pip.py
 RUN python3 get-pip.py --user --no-warn-script-location
