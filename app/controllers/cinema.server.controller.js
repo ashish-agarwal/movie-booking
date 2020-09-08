@@ -14,7 +14,7 @@ exports.create = function (req, res, next) {
             seat.cinema_id = cinema._id;
             return SeatService.createSeat(seat);
         }).then(() => {
-            return res.send({
+            return res.status(201).send({
                 result: cinema,
                 message: 'Cinema created successfully'
             });
