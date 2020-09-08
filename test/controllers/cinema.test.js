@@ -18,7 +18,7 @@ describe('Cinema APIs', () => {
         it('Valid Input', (done) => {
             auth.postValid('/api/v1/cinema', {
                 'name': 'PVR Hebel',
-                'city': 'Bangalore',
+                'city': 'hyderabad',
                 'address': 'Hebel'
             }).then((res) => {
                 config.cinema = res.result;
@@ -29,7 +29,7 @@ describe('Cinema APIs', () => {
         });
         it('Input with no name', (done) => {
             auth.postInvalid('/api/v1/cinema', {
-                'city': 'Bangalore',
+                'city': 'hyderabad',
                 'address': 'Hebel'
             }).then(() => {
                 done();
