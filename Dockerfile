@@ -36,7 +36,6 @@ RUN echo $ENVIRONMENT
 # RUN npm install --only=production
 # building your code for dev
 RUN npm install
-RUN npm test
 
 # Bundle app source
 COPY . .
