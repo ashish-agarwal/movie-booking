@@ -21,6 +21,9 @@ exports.getCinemas = function (query) {
 };
 
 exports.getCinemaById = function (id) {
+    if (!id) {
+        return Promise.reject(new Error('No cinema id given'));
+    }
     return Cinema.findById(id)
         .then((cinema) => {
             if (!cinema) {

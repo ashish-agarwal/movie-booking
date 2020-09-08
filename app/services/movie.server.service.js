@@ -17,5 +17,8 @@ exports.getMovies = function (query) {
 };
 
 exports.getMovieById = function (id) {
+    if (!id) {
+        return Promise.reject(new Error('No movie id given'));
+    }
     return Movie.findById(id);
 };

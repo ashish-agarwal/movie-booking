@@ -15,7 +15,7 @@ exports.create = function (req, res, next) {
         screeningObj = { ...screeningObj, ...result };
         return ScreeningService.createScreening(screeningObj);
     }).then((screening) => {
-        return res.send({
+        return res.status(201).send({
             result: screening,
             message: 'Screening created successfully'
         });

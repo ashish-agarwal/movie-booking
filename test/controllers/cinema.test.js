@@ -1,7 +1,7 @@
 'use strict';
 
 const auth = require('../helpers/auth');
-const Cinema = require('../../app/models/cinema');
+const config = require('../helpers/config');
 
 describe('Cinema APIs', () => {
     describe('GET /cinemas', () => {
@@ -21,8 +21,8 @@ describe('Cinema APIs', () => {
                 'city': 'Bangalore',
                 'address': 'Hebel'
             }).then((res) => {
+                config.cinema = res.result;
                 done();
-                return Cinema.deleteOne({ _id: res.result._id });
             }).catch((err) => {
                 done(err);
             });

@@ -10,6 +10,7 @@ const ScreeningSchema = new Schema(
             _id: {
                 type: Schema.Types.ObjectId,
                 ref: Cinema,
+                required: true,
                 trim: true
             },
             name: String,
@@ -19,12 +20,19 @@ const ScreeningSchema = new Schema(
             _id: {
                 type: Schema.Types.ObjectId,
                 ref: Movie,
+                required: true,
                 trim: true
             },
             title: String
         },
-        start_time: Date,
-        end_time: Date,
+        start_time: {
+            type: Date,
+            required: true
+        },
+        end_time: {
+            type: Date,
+            required: true
+        },
         reserved_seats: []
     },
     {
