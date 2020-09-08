@@ -94,8 +94,3 @@ describe('Screening APIs', () => {
         });
     });
 });
-
-after(async () => {
-    config.cinema && config.cinema._id && await Cinema.deleteOne({ _id: config.cinema._id });
-    config.screening && config.screening._id && await Screening.deleteOne({ _id: config.screening._id });
-});

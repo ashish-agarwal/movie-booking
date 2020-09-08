@@ -75,5 +75,12 @@ UserSchema.methods = {
         return crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('base64');
     }
 };
+UserSchema.set('toJSON', {
+    transform (doc, ret, opt) {
+        delete ret['hashed_password'];
+        delete ret['salt'];
+        return ret;
+    }
+});
 
 module.exports = mongoose.model('User', UserSchema);
