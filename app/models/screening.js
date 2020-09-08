@@ -32,8 +32,7 @@ const ScreeningSchema = new Schema(
         end_time: {
             type: Date,
             required: true
-        },
-        reserved_seats: []
+        }
     },
     {
         timestamps: true

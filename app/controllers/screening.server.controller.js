@@ -26,7 +26,7 @@ exports.create = function (req, res, next) {
 };
 
 exports.getByCity = function (req, res, next) {
-    return ScreeningService.getScreenings({ 'cinema.city': req.params.city, start_time: { $gte: new Date() } }).select({ 'reserved_seats': 0, '_v': 0 })
+    return ScreeningService.getScreenings({ 'cinema.city': req.params.city, start_time: { $gte: new Date() } }).select({ '_v': 0 })
         .populate('movie_id', 'title')
         .then((screenings) => {
             return res.send({
@@ -40,7 +40,7 @@ exports.getByCity = function (req, res, next) {
 
 exports.getByMovie = function (req, res, next) {
 
-    return ScreeningService.getScreenings({ 'cinema.city': req.query.city, 'movie.title': req.params.title, start_time: { $gte: new Date() } }).select({ 'reserved_seats': 0, '_v': 0 })
+    return ScreeningService.getScreenings({ 'cinema.city': req.query.city, 'movie.title': req.params.title, start_time: { $gte: new Date() } }).select({ '_v': 0 })
         .populate('movie_id', 'title')
         .then((screenings) => {
             return res.send({
