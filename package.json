@@ -4,7 +4,8 @@
     "private": true,
     "scripts": {
         "precommit": "lint-staged",
-        "start": "node ./bin/www"
+        "start": "node ./bin/www",
+        "test": "mocha --timeout 999999 --colors --exit test/**/**.test.js"
     },
     "lint-staged": {
         "*.js": [

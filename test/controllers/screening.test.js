@@ -1,8 +1,6 @@
 'use strict';
 
 const auth = require('../helpers/auth');
-const Screening = require('../../app/models/screening');
-const Cinema = require('../../app/models/cinema');
 const config = require('../helpers/config');
 
 const moment = require('moment');

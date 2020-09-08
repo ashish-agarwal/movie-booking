@@ -34,7 +34,7 @@ exports.create = function (req, res, next) {
         bookingObj.booking_at = new Date();
         return BookingService.createBooking(bookingObj);
     }).then((booking) => {
-        return res.send({
+        return res.status(201).send({
             result: booking,
             message: 'Booking created successfully'
         });

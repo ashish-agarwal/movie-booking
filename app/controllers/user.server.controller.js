@@ -15,7 +15,6 @@ exports.registerUser = function (req, res, next) {
             return res.status(201).send({ result: user.toJSON(), message: 'user created successfully' });
         }).catch((err) => {
             err.status = 400;
-            console.log('err ', err);
             next(err);
         });
 };

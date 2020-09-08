@@ -19,7 +19,13 @@ describe('Cinema APIs', () => {
             auth.postValid('/api/v1/cinema', {
                 'name': 'PVR Hebel',
                 'city': 'hyderabad',
-                'address': 'Hebel'
+                'address': 'Hebel',
+                seats: [
+                    { row: 'A', seat: '5' },
+                    { row: 'A', seat: '2' },
+                    { row: 'A', seat: '3' },
+                    { row: 'A', seat: '4' }
+                ]
             }).then((res) => {
                 config.cinema = res.result;
                 done();
