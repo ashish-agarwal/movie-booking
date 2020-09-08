@@ -33,7 +33,9 @@ COPY package*.json ./
 RUN echo $ENVIRONMENT
 
 # If you are building your code for production
-RUN npm install --only=production
+# RUN npm install --only=production
+# building your code for dev
+RUN npm install
 RUN npm test
 
 # Bundle app source
